@@ -18,7 +18,7 @@ in-depth usage guides.
 
 ## What
 
-This module is a soft-fork of [Guava](https://github.com/google/guava)
+This module is a soft-fork of [Guava](https://github.com/google/guava) which
 
 * Is shaded under `dev.mccue.guava`
 * Has a proper `module-info.java`
