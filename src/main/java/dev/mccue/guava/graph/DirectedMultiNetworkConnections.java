@@ -33,7 +33,7 @@ import java.util.Set;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * An implementation of {@link NetworkConnections} for directed networks with parallel edges.
+ * An implementation of {@code NetworkConnections} for directed networks with parallel edges.
  *
  * @author James Sexton
  * @param <N> Node parameter type

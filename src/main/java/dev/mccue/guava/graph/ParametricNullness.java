@@ -55,13 +55,13 @@ import java.lang.annotation.Target;
  * <ul>
  *   <li>Kotlin, for which it makes the type-variable usage (a) a Kotlin platform type when the type
  *       argument is non-nullable and (b) nullable when the type argument is nullable. We use this
- *       to "undo" {@link ElementTypesAreNonnullByDefault}. It is the best we can do for Kotlin
+ *       to "undo" {@code ElementTypesAreNonnullByDefault}. It is the best we can do for Kotlin
  *       under our current constraints.
  *   <li>NullAway, which will <a
  *       href="https://github.com/google/guava/issues/6126#issuecomment-1204399671">treat it
  *       identically to {@code Nullable} as of version 0.9.9</a>. To treat it that way before then,
  *       you can set {@code
- *       -XepOpt:NullAway:CustomNullableAnnotations=dev.mccue.guava.base.ParametricNullness,...,com.google.common.util.concurrent.ParametricNullness},
+ *       -XepOpt:NullAway:CustomNullableAnnotations=dev.mccue.guava.base.ParametricNullness,...,dev.mccue.guava.concurrent.ParametricNullness},
  *       where the {@code ...} contains the names of all the other {@code ParametricNullness}
  *       annotations in Guava. Or you might prefer to omit Guava from your {@code AnnotatedPackages}
  *       list.

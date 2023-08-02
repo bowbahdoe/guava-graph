@@ -34,7 +34,7 @@ import java.util.Set;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * A base implementation of {@link NetworkConnections} for directed networks.
+ * A base implementation of {@code NetworkConnections} for directed networks.
  *
  * @author James Sexton
  * @param <N> Node parameter type

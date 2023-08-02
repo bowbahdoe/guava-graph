@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * An implementation of {@link NetworkConnections} for undirected networks.
+ * An implementation of {@code NetworkConnections} for undirected networks.
  *
  * @author James Sexton
  * @param <N> Node parameter type

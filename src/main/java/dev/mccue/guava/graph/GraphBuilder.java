@@ -20,20 +20,19 @@ import static dev.mccue.guava.base.Preconditions.checkArgument;
 import static dev.mccue.guava.base.Preconditions.checkNotNull;
 import static dev.mccue.guava.graph.Graphs.checkNonNegative;
 
-
 import dev.mccue.guava.base.Optional;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.google.errorprone.annotations.DoNotMock;
 
 /**
- * A builder for constructing instances of {@link MutableGraph} or {@link ImmutableGraph} with
+ * A builder for constructing instances of {@code MutableGraph} or {@code ImmutableGraph} with
  * user-defined properties.
  *
  * <p>A {@code Graph} built by this class has the following default properties:
  *
  * <ul>
  *   <li>does not allow self-loops
- *   <li>orders {@link Graph#nodes()} in the order in which the elements were added (insertion
+ *   <li>orders {@code Graph#nodes()} in the order in which the elements were added (insertion
  *       order)
  * </ul>
  *
@@ -65,11 +64,10 @@ import com.google.errorprone.annotations.DoNotMock;
  * @author James Sexton
  * @author Joshua O'Madadhain
  * @param <N> The most general node type this builder will support. This is normally {@code Object}
- *     unless it is constrained by using a method like {@link #nodeOrder}, or the builder is
- *     constructed based on an existing {@code Graph} using {@link #from(Graph)}.
+ *     unless it is constrained by using a method like {@code #nodeOrder}, or the builder is
+ *     constructed based on an existing {@code Graph} using {@code #from(Graph)}.
  * @since 20.0
  */
-@Beta
 @DoNotMock
 @ElementTypesAreNonnullByDefault
 public final class GraphBuilder<N> extends AbstractGraphBuilder<N> {
@@ -79,21 +77,21 @@ public final class GraphBuilder<N> extends AbstractGraphBuilder<N> {
     super(directed);
   }
 
-  /** Returns a {@link GraphBuilder} for building directed graphs. */
+  /** Returns a {@code GraphBuilder} for building directed graphs. */
   public static GraphBuilder<Object> directed() {
     return new GraphBuilder<>(true);
   }
 
-  /** Returns a {@link GraphBuilder} for building undirected graphs. */
+  /** Returns a {@code GraphBuilder} for building undirected graphs. */
   public static GraphBuilder<Object> undirected() {
     return new GraphBuilder<>(false);
   }
 
   /**
-   * Returns a {@link GraphBuilder} initialized with all properties queryable from {@code graph}.
+   * Returns a {@code GraphBuilder} initialized with all properties queryable from {@code graph}.
    *
-   * <p>The "queryable" properties are those that are exposed through the {@link Graph} interface,
-   * such as {@link Graph#isDirected()}. Other properties, such as {@link #expectedNodeCount(int)},
+   * <p>The "queryable" properties are those that are exposed through the {@code Graph} interface,
+   * such as {@code Graph#isDirected()}. Other properties, such as {@code #expectedNodeCount(int)},
    * are not set in the new builder.
    */
   public static <N> GraphBuilder<N> from(Graph<N> graph) {
@@ -104,11 +102,11 @@ public final class GraphBuilder<N> extends AbstractGraphBuilder<N> {
   }
 
   /**
-   * Returns an {@link ImmutableGraph.Builder} with the properties of this {@link GraphBuilder}.
+   * Returns an {@code ImmutableGraph.Builder} with the properties of this {@code GraphBuilder}.
    *
-   * <p>The returned builder can be used for populating an {@link ImmutableGraph}.
+   * <p>The returned builder can be used for populating an {@code ImmutableGraph}.
    *
-   * <p>Note that the returned builder will always have {@link #incidentEdgeOrder} set to {@link
+   * <p>Note that the returned builder will always have {@code #incidentEdgeOrder} set to {@code
    * ElementOrder#stable()}, regardless of the value that was set in this builder.
    *
    * @since 28.0
@@ -120,7 +118,7 @@ public final class GraphBuilder<N> extends AbstractGraphBuilder<N> {
 
   /**
    * Specifies whether the graph will allow self-loops (edges that connect a node to itself).
-   * Attempting to add a self-loop to a graph that does not allow them will throw an {@link
+   * Attempting to add a self-loop to a graph that does not allow them will throw an {@code
    * UnsupportedOperationException}.
    *
    * <p>The default value is {@code false}.
@@ -143,9 +141,9 @@ public final class GraphBuilder<N> extends AbstractGraphBuilder<N> {
   }
 
   /**
-   * Specifies the order of iteration for the elements of {@link Graph#nodes()}.
+   * Specifies the order of iteration for the elements of {@code Graph#nodes()}.
    *
-   * <p>The default value is {@link ElementOrder#insertion() insertion order}.
+   * <p>The default value is {@code ElementOrder#insertion() insertion order}.
    */
   public <N1 extends N> GraphBuilder<N1> nodeOrder(ElementOrder<N1> nodeOrder) {
     GraphBuilder<N1> newBuilder = cast();
@@ -154,12 +152,12 @@ public final class GraphBuilder<N> extends AbstractGraphBuilder<N> {
   }
 
   /**
-   * Specifies the order of iteration for the elements of {@link Graph#edges()}, {@link
-   * Graph#adjacentNodes(Object)}, {@link Graph#predecessors(Object)}, {@link
-   * Graph#successors(Object)} and {@link Graph#incidentEdges(Object)}.
+   * Specifies the order of iteration for the elements of {@code Graph#edges()}, {@code
+   * Graph#adjacentNodes(Object)}, {@code Graph#predecessors(Object)}, {@code
+   * Graph#successors(Object)} and {@code Graph#incidentEdges(Object)}.
    *
-   * <p>The default value is {@link ElementOrder#unordered() unordered} for mutable graphs. For
-   * immutable graphs, this value is ignored; they always have a {@link ElementOrder#stable()
+   * <p>The default value is {@code ElementOrder#unordered() unordered} for mutable graphs. For
+   * immutable graphs, this value is ignored; they always have a {@code ElementOrder#stable()
    * stable} order.
    *
    * @throws IllegalArgumentException if {@code incidentEdgeOrder} is not either {@code
@@ -178,7 +176,7 @@ public final class GraphBuilder<N> extends AbstractGraphBuilder<N> {
     return newBuilder;
   }
 
-  /** Returns an empty {@link MutableGraph} with the properties of this {@link GraphBuilder}. */
+  /** Returns an empty {@code MutableGraph} with the properties of this {@code GraphBuilder}. */
   public <N1 extends N> MutableGraph<N1> build() {
     return new StandardMutableGraph<>(this);
   }

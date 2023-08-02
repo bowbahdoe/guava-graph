@@ -28,8 +28,8 @@ import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * Standard implementation of {@link MutableValueGraph} that supports both directed and undirected
- * graphs. Instances of this class should be constructed with {@link ValueGraphBuilder}.
+ * Standard implementation of {@code MutableValueGraph} that supports both directed and undirected
+ * graphs. Instances of this class should be constructed with {@code ValueGraphBuilder}.
  *
  * <p>Time complexities for mutation methods are all O(1) except for {@code removeNode(N node)},
  * which is in O(d_node) where d_node is the degree of {@code node}.
@@ -71,7 +71,7 @@ final class StandardMutableValueGraph<N, V> extends StandardValueGraph<N, V>
   }
 
   /**
-   * Adds {@code node} to the graph and returns the associated {@link GraphConnections}.
+   * Adds {@code node} to the graph and returns the associated {@code GraphConnections}.
    *
    * @throws IllegalStateException if {@code node} is already present
    */

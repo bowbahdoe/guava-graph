@@ -16,12 +16,11 @@
 
 package dev.mccue.guava.graph;
 
-
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 
 /**
- * A subinterface of {@link Network} which adds mutation methods. When mutation is not required,
- * users should prefer the {@link Network} interface.
+ * A subinterface of {@code Network} which adds mutation methods. When mutation is not required,
+ * users should prefer the {@code Network} interface.
  *
  * @author James Sexton
  * @author Joshua O'Madadhain
@@ -29,7 +28,6 @@ import com.google.errorprone.annotations.CanIgnoreReturnValue;
  * @param <E> Edge parameter type
  * @since 20.0
  */
-@Beta
 @ElementTypesAreNonnullByDefault
 public interface MutableNetwork<N, E> extends Network<N, E> {
 
@@ -53,16 +51,16 @@ public interface MutableNetwork<N, E> extends Network<N, E> {
    * also be non-null.
    *
    * <p>If {@code nodeU} and {@code nodeV} are not already present in this graph, this method will
-   * silently {@link #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
+   * silently {@code #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
    *
    * <p>If {@code edge} already connects {@code nodeU} to {@code nodeV} (in the specified order if
-   * this network {@link #isDirected()}, else in any order), then this method will have no effect.
+   * this network {@code #isDirected()}, else in any order), then this method will have no effect.
    *
    * @return {@code true} if the network was modified as a result of this call
    * @throws IllegalArgumentException if {@code edge} already exists in the graph and does not
    *     connect {@code nodeU} to {@code nodeV}
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     #allowsParallelEdges()} or {@link #allowsSelfLoops()}
+   * @throws IllegalArgumentException if the introduction of the edge would violate {@code
+   *     #allowsParallelEdges()} or {@code #allowsSelfLoops()}
    */
   @CanIgnoreReturnValue
   boolean addEdge(N nodeU, N nodeV, E edge);
@@ -80,7 +78,7 @@ public interface MutableNetwork<N, E> extends Network<N, E> {
    * also be non-null.
    *
    * <p>If either or both endpoints are not already present in this graph, this method will silently
-   * {@link #addNode(Object) add} each missing endpoint to the graph.
+   * {@code #addNode(Object) add} each missing endpoint to the graph.
    *
    * <p>If {@code edge} already connects an endpoint pair equal to {@code endpoints}, then this
    * method will have no effect.
@@ -88,8 +86,8 @@ public interface MutableNetwork<N, E> extends Network<N, E> {
    * @return {@code true} if the network was modified as a result of this call
    * @throws IllegalArgumentException if {@code edge} already exists in the graph and connects some
    *     other endpoint pair that is not equal to {@code endpoints}
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     #allowsParallelEdges()} or {@link #allowsSelfLoops()}
+   * @throws IllegalArgumentException if the introduction of the edge would violate {@code
+   *     #allowsParallelEdges()} or {@code #allowsSelfLoops()}
    * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
    * @since 27.1
    */

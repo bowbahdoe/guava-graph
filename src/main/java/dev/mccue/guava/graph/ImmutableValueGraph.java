@@ -19,7 +19,6 @@ package dev.mccue.guava.graph;
 import static dev.mccue.guava.base.Preconditions.checkNotNull;
 import static java.util.Objects.requireNonNull;
 
-
 import dev.mccue.guava.base.Function;
 import dev.mccue.guava.collect.ImmutableMap;
 import dev.mccue.guava.collect.Maps;
@@ -27,8 +26,8 @@ import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.google.errorprone.annotations.Immutable;
 
 /**
- * A {@link ValueGraph} whose elements and structural relationships will never change. Instances of
- * this class may be obtained with {@link #copyOf(ValueGraph)}.
+ * A {@code ValueGraph} whose elements and structural relationships will never change. Instances of
+ * this class may be obtained with {@code #copyOf(ValueGraph)}.
  *
  * <p>See the Guava User's Guide's <a
  * href="https://github.com/google/guava/wiki/GraphsExplained#immutable-implementations">discussion
@@ -41,7 +40,6 @@ import com.google.errorprone.annotations.Immutable;
  * @param <V> Value parameter type
  * @since 20.0
  */
-@Beta
 @Immutable(containerOf = {"N", "V"})
 @SuppressWarnings("Immutable") // Extends StandardValueGraph but uses ImmutableMaps.
 @ElementTypesAreNonnullByDefault
@@ -103,7 +101,7 @@ public final class ImmutableValueGraph<N, V> extends StandardValueGraph<N, V> {
   }
 
   /**
-   * A builder for creating {@link ImmutableValueGraph} instances, especially {@code static final}
+   * A builder for creating {@code ImmutableValueGraph} instances, especially {@code static final}
    * graphs. Example:
    *
    * <pre>{@code
@@ -117,7 +115,7 @@ public final class ImmutableValueGraph<N, V> extends StandardValueGraph<N, V> {
    *         .build();
    * }</pre>
    *
-   * <p>Builder instances can be reused; it is safe to call {@link #build} multiple times to build
+   * <p>Builder instances can be reused; it is safe to call {@code #build} multiple times to build
    * multiple graphs in series. Each new graph contains all the elements of the ones created before
    * it.
    *
@@ -157,10 +155,10 @@ public final class ImmutableValueGraph<N, V> extends StandardValueGraph<N, V> {
      * <p>Values do not have to be unique. However, values must be non-null.
      *
      * <p>If {@code nodeU} and {@code nodeV} are not already present in this graph, this method will
-     * silently {@link #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
+     * silently {@code #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
      *
      * @return this {@code Builder} object
-     * @throws IllegalArgumentException if the introduction of the edge would violate {@link
+     * @throws IllegalArgumentException if the introduction of the edge would violate {@code
      *     #allowsSelfLoops()}
      */
     @CanIgnoreReturnValue
@@ -181,10 +179,10 @@ public final class ImmutableValueGraph<N, V> extends StandardValueGraph<N, V> {
      * <p>Values do not have to be unique. However, values must be non-null.
      *
      * <p>If either or both endpoints are not already present in this graph, this method will
-     * silently {@link #addNode(Object) add} each missing endpoint to the graph.
+     * silently {@code #addNode(Object) add} each missing endpoint to the graph.
      *
      * @return this {@code Builder} object
-     * @throws IllegalArgumentException if the introduction of the edge would violate {@link
+     * @throws IllegalArgumentException if the introduction of the edge would violate {@code
      *     #allowsSelfLoops()}
      * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
      */

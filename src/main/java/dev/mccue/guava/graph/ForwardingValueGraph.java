@@ -21,7 +21,7 @@ import java.util.Set;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * A class to allow {@link ValueGraph} implementations to be backed by a provided delegate. This is
+ * A class to allow {@code ValueGraph} implementations to be backed by a provided delegate. This is
  * not currently planned to be released as a general-purpose forwarding class.
  *
  * @author James Sexton
@@ -38,7 +38,7 @@ abstract class ForwardingValueGraph<N, V> extends AbstractValueGraph<N, V> {
   }
 
   /**
-   * Defer to {@link AbstractValueGraph#edges()} (based on {@link #successors(Object)}) for full
+   * Defer to {@code AbstractValueGraph#edges()} (based on {@code #successors(Object)}) for full
    * edges() implementation.
    */
   @Override

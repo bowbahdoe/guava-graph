@@ -16,7 +16,6 @@
 
 package dev.mccue.guava.graph;
 
-
 import com.google.errorprone.annotations.DoNotMock;
 
 /**
@@ -26,7 +25,7 @@ import com.google.errorprone.annotations.DoNotMock;
  * <p>This interface is meant to be used as the type of a parameter to graph algorithms (such as
  * topological sort) that only need a way of accessing the predecessors of a node in a graph.
  *
- * <h2>Usage</h2>
+ * <h3>Usage</h3>
  *
  * Given an algorithm, for example:
  *
@@ -36,8 +35,8 @@ import com.google.errorprone.annotations.DoNotMock;
  *
  * you will invoke it depending on the graph representation you're using.
  *
- * <p>If you have an instance of one of the primary {@code common.graph} types ({@link Graph},
- * {@link ValueGraph}, and {@link Network}):
+ * <p>If you have an instance of one of the primary {@code common.graph} types ({@code Graph},
+ * {@code ValueGraph}, and {@code Network}):
  *
  * <pre>{@code
  * someGraphAlgorithm(startNode, graph);
@@ -63,7 +62,7 @@ import com.google.errorprone.annotations.DoNotMock;
  *
  * <p>Graph algorithms that need additional capabilities (accessing both predecessors and
  * successors, iterating over the edges, etc.) should declare their input to be of a type that
- * provides those capabilities, such as {@link Graph}, {@link ValueGraph}, or {@link Network}.
+ * provides those capabilities, such as {@code Graph}, {@code ValueGraph}, or {@code Network}.
  *
  * <h3>Additional documentation</h3>
  *
@@ -78,7 +77,6 @@ import com.google.errorprone.annotations.DoNotMock;
  * @param <N> Node parameter type
  * @since 23.0
  */
-@Beta
 @DoNotMock("Implement with a lambda, or use GraphBuilder to build a Graph with the desired edges")
 @ElementTypesAreNonnullByDefault
 public interface PredecessorsFunction<N> {
@@ -88,7 +86,7 @@ public interface PredecessorsFunction<N> {
    * {@code node}'s incoming edges <i>against</i> the direction (if any) of the edge.
    *
    * <p>Some algorithms that operate on a {@code PredecessorsFunction} may produce undesired results
-   * if the returned {@link Iterable} contains duplicate elements. Implementations of such
+   * if the returned {@code Iterable} contains duplicate elements. Implementations of such
    * algorithms should document their behavior in the presence of duplicates.
    *
    * <p>The elements of the returned {@code Iterable} must each be:

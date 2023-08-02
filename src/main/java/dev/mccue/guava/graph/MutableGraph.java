@@ -16,19 +16,17 @@
 
 package dev.mccue.guava.graph;
 
-
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 
 /**
- * A subinterface of {@link Graph} which adds mutation methods. When mutation is not required, users
- * should prefer the {@link Graph} interface.
+ * A subinterface of {@code Graph} which adds mutation methods. When mutation is not required, users
+ * should prefer the {@code Graph} interface.
  *
  * @author James Sexton
  * @author Joshua O'Madadhain
  * @param <N> Node parameter type
  * @since 20.0
  */
-@Beta
 @ElementTypesAreNonnullByDefault
 public interface MutableGraph<N> extends Graph<N> {
 
@@ -49,10 +47,10 @@ public interface MutableGraph<N> extends Graph<N> {
    * undirected.
    *
    * <p>If {@code nodeU} and {@code nodeV} are not already present in this graph, this method will
-   * silently {@link #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
+   * silently {@code #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
    *
    * @return {@code true} if the graph was modified as a result of this call
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
+   * @throws IllegalArgumentException if the introduction of the edge would violate {@code
    *     #allowsSelfLoops()}
    */
   @CanIgnoreReturnValue
@@ -68,10 +66,10 @@ public interface MutableGraph<N> extends Graph<N> {
    * <p>If this graph is directed, {@code endpoints} must be ordered.
    *
    * <p>If either or both endpoints are not already present in this graph, this method will silently
-   * {@link #addNode(Object) add} each missing endpoint to the graph.
+   * {@code #addNode(Object) add} each missing endpoint to the graph.
    *
    * @return {@code true} if the graph was modified as a result of this call
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
+   * @throws IllegalArgumentException if the introduction of the edge would violate {@code
    *     #allowsSelfLoops()}
    * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
    * @since 27.1

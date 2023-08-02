@@ -18,7 +18,6 @@ package dev.mccue.guava.graph;
 
 import static dev.mccue.guava.base.Preconditions.checkNotNull;
 
-
 import dev.mccue.guava.base.Function;
 import dev.mccue.guava.collect.ImmutableMap;
 import dev.mccue.guava.collect.Maps;
@@ -27,8 +26,8 @@ import com.google.errorprone.annotations.Immutable;
 import java.util.Map;
 
 /**
- * A {@link Network} whose elements and structural relationships will never change. Instances of
- * this class may be obtained with {@link #copyOf(Network)}.
+ * A {@code Network} whose elements and structural relationships will never change. Instances of
+ * this class may be obtained with {@code #copyOf(Network)}.
  *
  * <p>See the Guava User's Guide's <a
  * href="https://github.com/google/guava/wiki/GraphsExplained#immutable-implementations">discussion
@@ -43,7 +42,6 @@ import java.util.Map;
  * @param <E> Edge parameter type
  * @since 20.0
  */
-@Beta
 @Immutable(containerOf = {"N", "E"})
 @SuppressWarnings("Immutable") // Extends StandardNetwork but uses ImmutableMaps.
 @ElementTypesAreNonnullByDefault
@@ -128,7 +126,7 @@ public final class ImmutableNetwork<N, E> extends StandardNetwork<N, E> {
   }
 
   /**
-   * A builder for creating {@link ImmutableNetwork} instances, especially {@code static final}
+   * A builder for creating {@code ImmutableNetwork} instances, especially {@code static final}
    * networks. Example:
    *
    * <pre>{@code
@@ -144,7 +142,7 @@ public final class ImmutableNetwork<N, E> extends StandardNetwork<N, E> {
    *         .build();
    * }</pre>
    *
-   * <p>Builder instances can be reused; it is safe to call {@link #build} multiple times to build
+   * <p>Builder instances can be reused; it is safe to call {@code #build} multiple times to build
    * multiple networks in series. Each new network contains all the elements of the ones created
    * before it.
    *
@@ -181,16 +179,16 @@ public final class ImmutableNetwork<N, E> extends StandardNetwork<N, E> {
      * must also be non-null.
      *
      * <p>If {@code nodeU} and {@code nodeV} are not already present in this network, this method
-     * will silently {@link #addNode(Object) add} {@code nodeU} and {@code nodeV} to the network.
+     * will silently {@code #addNode(Object) add} {@code nodeU} and {@code nodeV} to the network.
      *
      * <p>If {@code edge} already connects {@code nodeU} to {@code nodeV} (in the specified order if
-     * this network {@link #isDirected()}, else in any order), then this method will have no effect.
+     * this network {@code #isDirected()}, else in any order), then this method will have no effect.
      *
      * @return this {@code Builder} object
      * @throws IllegalArgumentException if {@code edge} already exists in the network and does not
      *     connect {@code nodeU} to {@code nodeV}
-     * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-     *     #allowsParallelEdges()} or {@link #allowsSelfLoops()}
+     * @throws IllegalArgumentException if the introduction of the edge would violate {@code
+     *     #allowsParallelEdges()} or {@code #allowsSelfLoops()}
      */
     @CanIgnoreReturnValue
     public ImmutableNetwork.Builder<N, E> addEdge(N nodeU, N nodeV, E edge) {
@@ -211,7 +209,7 @@ public final class ImmutableNetwork<N, E> extends StandardNetwork<N, E> {
      * must also be non-null.
      *
      * <p>If either or both endpoints are not already present in this network, this method will
-     * silently {@link #addNode(Object) add} each missing endpoint to the network.
+     * silently {@code #addNode(Object) add} each missing endpoint to the network.
      *
      * <p>If {@code edge} already connects an endpoint pair equal to {@code endpoints}, then this
      * method will have no effect.
@@ -219,8 +217,8 @@ public final class ImmutableNetwork<N, E> extends StandardNetwork<N, E> {
      * @return this {@code Builder} object
      * @throws IllegalArgumentException if {@code edge} already exists in the network and connects
      *     some other endpoint pair that is not equal to {@code endpoints}
-     * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-     *     #allowsParallelEdges()} or {@link #allowsSelfLoops()}
+     * @throws IllegalArgumentException if the introduction of the edge would violate {@code
+     *     #allowsParallelEdges()} or {@code #allowsSelfLoops()}
      * @throws IllegalArgumentException if the endpoints are unordered and the network is directed
      */
     @CanIgnoreReturnValue

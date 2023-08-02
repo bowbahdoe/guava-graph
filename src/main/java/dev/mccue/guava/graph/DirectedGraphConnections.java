@@ -43,7 +43,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * An implementation of {@link GraphConnections} for directed graphs.
+ * An implementation of {@code GraphConnections} for directed graphs.
  *
  * @author James Sexton
  * @author Jens Nyman
@@ -129,7 +129,7 @@ final class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
   /**
    * All node connections in this graph, in edge insertion order.
    *
-   * <p>Note: This field and {@link #adjacentNodeValues} cannot be combined into a single
+   * <p>Note: This field and {@code #adjacentNodeValues} cannot be combined into a single
    * LinkedHashMap because one target node may be mapped to both a predecessor and a successor. A
    * LinkedHashMap combines two such edges into a single node-value pair, even though the edges may
    * not have been inserted consecutively.

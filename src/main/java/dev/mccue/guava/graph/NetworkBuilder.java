@@ -19,12 +19,11 @@ package dev.mccue.guava.graph;
 import static dev.mccue.guava.base.Preconditions.checkNotNull;
 import static dev.mccue.guava.graph.Graphs.checkNonNegative;
 
-
 import dev.mccue.guava.base.Optional;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 
 /**
- * A builder for constructing instances of {@link MutableNetwork} or {@link ImmutableNetwork} with
+ * A builder for constructing instances of {@code MutableNetwork} or {@code ImmutableNetwork} with
  * user-defined properties.
  *
  * <p>A {@code Network} built by this class has the following default properties:
@@ -32,7 +31,7 @@ import com.google.errorprone.annotations.CanIgnoreReturnValue;
  * <ul>
  *   <li>does not allow parallel edges
  *   <li>does not allow self-loops
- *   <li>orders {@link Network#nodes()} and {@link Network#edges()} in the order in which the
+ *   <li>orders {@code Network#nodes()} and {@code Network#edges()} in the order in which the
  *       elements were added (insertion order)
  * </ul>
  *
@@ -65,14 +64,13 @@ import com.google.errorprone.annotations.CanIgnoreReturnValue;
  * @author James Sexton
  * @author Joshua O'Madadhain
  * @param <N> The most general node type this builder will support. This is normally {@code Object}
- *     unless it is constrained by using a method like {@link #nodeOrder}, or the builder is
- *     constructed based on an existing {@code Network} using {@link #from(Network)}.
+ *     unless it is constrained by using a method like {@code #nodeOrder}, or the builder is
+ *     constructed based on an existing {@code Network} using {@code #from(Network)}.
  * @param <E> The most general edge type this builder will support. This is normally {@code Object}
- *     unless it is constrained by using a method like {@link #edgeOrder}, or the builder is
- *     constructed based on an existing {@code Network} using {@link #from(Network)}.
+ *     unless it is constrained by using a method like {@code #edgeOrder}, or the builder is
+ *     constructed based on an existing {@code Network} using {@code #from(Network)}.
  * @since 20.0
  */
-@Beta
 @ElementTypesAreNonnullByDefault
 public final class NetworkBuilder<N, E> extends AbstractGraphBuilder<N> {
   boolean allowsParallelEdges = false;
@@ -84,22 +82,22 @@ public final class NetworkBuilder<N, E> extends AbstractGraphBuilder<N> {
     super(directed);
   }
 
-  /** Returns a {@link NetworkBuilder} for building directed networks. */
+  /** Returns a {@code NetworkBuilder} for building directed networks. */
   public static NetworkBuilder<Object, Object> directed() {
     return new NetworkBuilder<>(true);
   }
 
-  /** Returns a {@link NetworkBuilder} for building undirected networks. */
+  /** Returns a {@code NetworkBuilder} for building undirected networks. */
   public static NetworkBuilder<Object, Object> undirected() {
     return new NetworkBuilder<>(false);
   }
 
   /**
-   * Returns a {@link NetworkBuilder} initialized with all properties queryable from {@code
+   * Returns a {@code NetworkBuilder} initialized with all properties queryable from {@code
    * network}.
    *
-   * <p>The "queryable" properties are those that are exposed through the {@link Network} interface,
-   * such as {@link Network#isDirected()}. Other properties, such as {@link
+   * <p>The "queryable" properties are those that are exposed through the {@code Network} interface,
+   * such as {@code Network#isDirected()}. Other properties, such as {@code
    * #expectedNodeCount(int)}, are not set in the new builder.
    */
   public static <N, E> NetworkBuilder<N, E> from(Network<N, E> network) {
@@ -111,9 +109,9 @@ public final class NetworkBuilder<N, E> extends AbstractGraphBuilder<N> {
   }
 
   /**
-   * Returns an {@link ImmutableNetwork.Builder} with the properties of this {@link NetworkBuilder}.
+   * Returns an {@code ImmutableNetwork.Builder} with the properties of this {@code NetworkBuilder}.
    *
-   * <p>The returned builder can be used for populating an {@link ImmutableNetwork}.
+   * <p>The returned builder can be used for populating an {@code ImmutableNetwork}.
    *
    * @since 28.0
    */
@@ -124,7 +122,7 @@ public final class NetworkBuilder<N, E> extends AbstractGraphBuilder<N> {
 
   /**
    * Specifies whether the network will allow parallel edges. Attempting to add a parallel edge to a
-   * network that does not allow them will throw an {@link UnsupportedOperationException}.
+   * network that does not allow them will throw an {@code UnsupportedOperationException}.
    *
    * <p>The default value is {@code false}.
    */
@@ -136,7 +134,7 @@ public final class NetworkBuilder<N, E> extends AbstractGraphBuilder<N> {
 
   /**
    * Specifies whether the network will allow self-loops (edges that connect a node to itself).
-   * Attempting to add a self-loop to a network that does not allow them will throw an {@link
+   * Attempting to add a self-loop to a network that does not allow them will throw an {@code
    * UnsupportedOperationException}.
    *
    * <p>The default value is {@code false}.
@@ -170,9 +168,9 @@ public final class NetworkBuilder<N, E> extends AbstractGraphBuilder<N> {
   }
 
   /**
-   * Specifies the order of iteration for the elements of {@link Network#nodes()}.
+   * Specifies the order of iteration for the elements of {@code Network#nodes()}.
    *
-   * <p>The default value is {@link ElementOrder#insertion() insertion order}.
+   * <p>The default value is {@code ElementOrder#insertion() insertion order}.
    */
   public <N1 extends N> NetworkBuilder<N1, E> nodeOrder(ElementOrder<N1> nodeOrder) {
     NetworkBuilder<N1, E> newBuilder = cast();
@@ -181,9 +179,9 @@ public final class NetworkBuilder<N, E> extends AbstractGraphBuilder<N> {
   }
 
   /**
-   * Specifies the order of iteration for the elements of {@link Network#edges()}.
+   * Specifies the order of iteration for the elements of {@code Network#edges()}.
    *
-   * <p>The default value is {@link ElementOrder#insertion() insertion order}.
+   * <p>The default value is {@code ElementOrder#insertion() insertion order}.
    */
   public <E1 extends E> NetworkBuilder<N, E1> edgeOrder(ElementOrder<E1> edgeOrder) {
     NetworkBuilder<N, E1> newBuilder = cast();
@@ -191,7 +189,7 @@ public final class NetworkBuilder<N, E> extends AbstractGraphBuilder<N> {
     return newBuilder;
   }
 
-  /** Returns an empty {@link MutableNetwork} with the properties of this {@link NetworkBuilder}. */
+  /** Returns an empty {@code MutableNetwork} with the properties of this {@code NetworkBuilder}. */
   public <N1 extends N, E1 extends E> MutableNetwork<N1, E1> build() {
     return new StandardMutableNetwork<>(this);
   }

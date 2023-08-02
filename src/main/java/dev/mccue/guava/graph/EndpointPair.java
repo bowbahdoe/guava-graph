@@ -19,7 +19,6 @@ package dev.mccue.guava.graph;
 import static dev.mccue.guava.base.Preconditions.checkNotNull;
 import static dev.mccue.guava.graph.GraphConstants.NOT_AVAILABLE_ON_UNDIRECTED;
 
-
 import dev.mccue.guava.base.Objects;
 import dev.mccue.guava.collect.Iterators;
 import dev.mccue.guava.collect.UnmodifiableIterator;
@@ -27,17 +26,16 @@ import com.google.errorprone.annotations.Immutable;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * An immutable pair representing the two endpoints of an edge in a graph. The {@link EndpointPair}
- * of a directed edge is an ordered pair of nodes ({@link #source()} and {@link #target()}). The
- * {@link EndpointPair} of an undirected edge is an unordered pair of nodes ({@link #nodeU()} and
- * {@link #nodeV()}).
+ * An immutable pair representing the two endpoints of an edge in a graph. The {@code EndpointPair}
+ * of a directed edge is an ordered pair of nodes ({@code #source()} and {@code #target()}). The
+ * {@code EndpointPair} of an undirected edge is an unordered pair of nodes ({@code #nodeU()} and
+ * {@code #nodeV()}).
  *
  * <p>The edge is a self-loop if, and only if, the two endpoints are equal.
  *
  * @author James Sexton
  * @since 20.0
  */
-@Beta
 @Immutable(containerOf = {"N"})
 @ElementTypesAreNonnullByDefault
 public abstract class EndpointPair<N> implements Iterable<N> {
@@ -49,43 +47,43 @@ public abstract class EndpointPair<N> implements Iterable<N> {
     this.nodeV = checkNotNull(nodeV);
   }
 
-  /** Returns an {@link EndpointPair} representing the endpoints of a directed edge. */
+  /** Returns an {@code EndpointPair} representing the endpoints of a directed edge. */
   public static <N> EndpointPair<N> ordered(N source, N target) {
     return new Ordered<>(source, target);
   }
 
-  /** Returns an {@link EndpointPair} representing the endpoints of an undirected edge. */
+  /** Returns an {@code EndpointPair} representing the endpoints of an undirected edge. */
   public static <N> EndpointPair<N> unordered(N nodeU, N nodeV) {
     // Swap nodes on purpose to prevent callers from relying on the "ordering" of an unordered pair.
     return new Unordered<>(nodeV, nodeU);
   }
 
-  /** Returns an {@link EndpointPair} representing the endpoints of an edge in {@code graph}. */
+  /** Returns an {@code EndpointPair} representing the endpoints of an edge in {@code graph}. */
   static <N> EndpointPair<N> of(Graph<?> graph, N nodeU, N nodeV) {
     return graph.isDirected() ? ordered(nodeU, nodeV) : unordered(nodeU, nodeV);
   }
 
-  /** Returns an {@link EndpointPair} representing the endpoints of an edge in {@code network}. */
+  /** Returns an {@code EndpointPair} representing the endpoints of an edge in {@code network}. */
   static <N> EndpointPair<N> of(Network<?, ?> network, N nodeU, N nodeV) {
     return network.isDirected() ? ordered(nodeU, nodeV) : unordered(nodeU, nodeV);
   }
 
   /**
-   * If this {@link EndpointPair} {@link #isOrdered()}, returns the node which is the source.
+   * If this {@code EndpointPair} {@code #isOrdered()}, returns the node which is the source.
    *
-   * @throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
+   * @throws UnsupportedOperationException if this {@code EndpointPair} is not ordered
    */
   public abstract N source();
 
   /**
-   * If this {@link EndpointPair} {@link #isOrdered()}, returns the node which is the target.
+   * If this {@code EndpointPair} {@code #isOrdered()}, returns the node which is the target.
    *
-   * @throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
+   * @throws UnsupportedOperationException if this {@code EndpointPair} is not ordered
    */
   public abstract N target();
 
   /**
-   * If this {@link EndpointPair} {@link #isOrdered()} returns the {@link #source()}; otherwise,
+   * If this {@code EndpointPair} {@code #isOrdered()} returns the {@code #source()}; otherwise,
    * returns an arbitrary (but consistent) endpoint of the origin edge.
    */
   public final N nodeU() {
@@ -93,8 +91,8 @@ public abstract class EndpointPair<N> implements Iterable<N> {
   }
 
   /**
-   * Returns the node {@link #adjacentNode(Object) adjacent} to {@link #nodeU()} along the origin
-   * edge. If this {@link EndpointPair} {@link #isOrdered()}, this is equal to {@link #target()}.
+   * Returns the node {@code #adjacentNode(Object) adjacent} to {@code #nodeU()} along the origin
+   * edge. If this {@code EndpointPair} {@code #isOrdered()}, this is equal to {@code #target()}.
    */
   public final N nodeV() {
     return nodeV;
@@ -103,7 +101,7 @@ public abstract class EndpointPair<N> implements Iterable<N> {
   /**
    * Returns the node that is adjacent to {@code node} along the origin edge.
    *
-   * @throws IllegalArgumentException if this {@link EndpointPair} does not contain {@code node}
+   * @throws IllegalArgumentException if this {@code EndpointPair} does not contain {@code node}
    * @since 20.0 (but the argument type was changed from {@code Object} to {@code N} in 31.0)
    */
   public final N adjacentNode(N node) {
@@ -117,28 +115,28 @@ public abstract class EndpointPair<N> implements Iterable<N> {
   }
 
   /**
-   * Returns {@code true} if this {@link EndpointPair} is an ordered pair (i.e. represents the
+   * Returns {@code true} if this {@code EndpointPair} is an ordered pair (i.e. represents the
    * endpoints of a directed edge).
    */
   public abstract boolean isOrdered();
 
-  /** Iterates in the order {@link #nodeU()}, {@link #nodeV()}. */
+  /** Iterates in the order {@code #nodeU()}, {@code #nodeV()}. */
   @Override
   public final UnmodifiableIterator<N> iterator() {
     return Iterators.forArray(nodeU, nodeV);
   }
 
   /**
-   * Two ordered {@link EndpointPair}s are equal if their {@link #source()} and {@link #target()}
-   * are equal. Two unordered {@link EndpointPair}s are equal if they contain the same nodes. An
-   * ordered {@link EndpointPair} is never equal to an unordered {@link EndpointPair}.
+   * Two ordered {@code EndpointPair}s are equal if their {@code #source()} and {@code #target()}
+   * are equal. Two unordered {@code EndpointPair}s are equal if they contain the same nodes. An
+   * ordered {@code EndpointPair} is never equal to an unordered {@code EndpointPair}.
    */
   @Override
   public abstract boolean equals(@CheckForNull Object obj);
 
   /**
-   * The hashcode of an ordered {@link EndpointPair} is equal to {@code Objects.hashCode(source(),
-   * target())}. The hashcode of an unordered {@link EndpointPair} is equal to {@code
+   * The hashcode of an ordered {@code EndpointPair} is equal to {@code Objects.hashCode(source(),
+   * target())}. The hashcode of an unordered {@code EndpointPair} is equal to {@code
    * nodeU().hashCode() + nodeV().hashCode()}.
    */
   @Override

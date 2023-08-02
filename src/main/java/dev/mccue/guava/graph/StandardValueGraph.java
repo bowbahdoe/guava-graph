@@ -27,10 +27,10 @@ import java.util.TreeMap;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * Standard implementation of {@link ValueGraph} that supports the options supplied by {@link
+ * Standard implementation of {@code ValueGraph} that supports the options supplied by {@code
  * AbstractGraphBuilder}.
  *
- * <p>This class maintains a map of nodes to {@link GraphConnections}.
+ * <p>This class maintains a map of nodes to {@code GraphConnections}.
  *
  * <p>Collection-returning accessors return unmodifiable views: the view returned will reflect
  * changes to the graph (if the graph is mutable) but may not be modified by the user.

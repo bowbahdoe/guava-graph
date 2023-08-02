@@ -28,7 +28,7 @@ import dev.mccue.jsr305.CheckForNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
- * A class to facilitate the set returned by {@link Graph#edges()}.
+ * A class to facilitate the set returned by {@code Graph#edges()}.
  *
  * @author James Sexton
  */
@@ -52,8 +52,8 @@ abstract class EndpointPairIterator<N> extends AbstractIterator<EndpointPair<N>>
   }
 
   /**
-   * Called after {@link #successorIterator} is exhausted. Advances {@link #node} to the next node
-   * and updates {@link #successorIterator} to iterate through the successors of {@link #node}.
+   * Called after {@code #successorIterator} is exhausted. Advances {@code #node} to the next node
+   * and updates {@code #successorIterator} to iterate through the successors of {@code #node}.
    */
   final boolean advance() {
     checkState(!successorIterator.hasNext());
@@ -91,7 +91,7 @@ abstract class EndpointPairIterator<N> extends AbstractIterator<EndpointPair<N>>
 
   /**
    * If the graph is undirected, each unordered [node, otherNode] pair (except self-loops) will be
-   * visited twice if there is an edge connecting them. To avoid returning duplicate {@link
+   * visited twice if there is an edge connecting them. To avoid returning duplicate {@code
    * EndpointPair}s, we keep track of the nodes that we have visited. When processing endpoint
    * pairs, we skip if the "other node" is in the visited set, as shown below:
    *

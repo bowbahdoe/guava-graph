@@ -16,20 +16,18 @@
 
 package dev.mccue.guava.graph;
 
-
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * A subinterface of {@link ValueGraph} which adds mutation methods. When mutation is not required,
- * users should prefer the {@link ValueGraph} interface.
+ * A subinterface of {@code ValueGraph} which adds mutation methods. When mutation is not required,
+ * users should prefer the {@code ValueGraph} interface.
  *
  * @author James Sexton
  * @param <N> Node parameter type
  * @param <V> Value parameter type
  * @since 20.0
  */
-@Beta
 @ElementTypesAreNonnullByDefault
 public interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
 
@@ -53,11 +51,11 @@ public interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
    * <p>Values do not have to be unique. However, values must be non-null.
    *
    * <p>If {@code nodeU} and {@code nodeV} are not already present in this graph, this method will
-   * silently {@link #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
+   * silently {@code #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
    *
    * @return the value previously associated with the edge connecting {@code nodeU} to {@code
    *     nodeV}, or null if there was no such edge.
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
+   * @throws IllegalArgumentException if the introduction of the edge would violate {@code
    *     #allowsSelfLoops()}
    */
   @CanIgnoreReturnValue
@@ -76,11 +74,11 @@ public interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
    * <p>Values do not have to be unique. However, values must be non-null.
    *
    * <p>If either or both endpoints are not already present in this graph, this method will silently
-   * {@link #addNode(Object) add} each missing endpoint to the graph.
+   * {@code #addNode(Object) add} each missing endpoint to the graph.
    *
    * @return the value previously associated with the edge connecting {@code nodeU} to {@code
    *     nodeV}, or null if there was no such edge.
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
+   * @throws IllegalArgumentException if the introduction of the edge would violate {@code
    *     #allowsSelfLoops()}
    * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
    * @since 27.1

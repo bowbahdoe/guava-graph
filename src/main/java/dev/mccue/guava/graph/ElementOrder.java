@@ -19,7 +19,6 @@ package dev.mccue.guava.graph;
 import static dev.mccue.guava.base.Preconditions.checkNotNull;
 import static dev.mccue.guava.base.Preconditions.checkState;
 
-
 import dev.mccue.guava.base.MoreObjects;
 import dev.mccue.guava.base.MoreObjects.ToStringHelper;
 import dev.mccue.guava.base.Objects;
@@ -44,7 +43,6 @@ import dev.mccue.jsr305.CheckForNull;
  * @author Joshua O'Madadhain
  * @since 20.0
  */
-@Beta
 @Immutable
 @ElementTypesAreNonnullByDefault
 public final class ElementOrder<T> {
@@ -90,13 +88,13 @@ public final class ElementOrder<T> {
    * <p>This instance is only useful in combination with {@code incidentEdgeOrder}, e.g. {@code
    * graphBuilder.incidentEdgeOrder(ElementOrder.stable())}.
    *
-   * <h4>In combination with {@code incidentEdgeOrder}</h4>
+   * <h3>In combination with {@code incidentEdgeOrder}</h3>
    *
    * <p>{@code incidentEdgeOrder(ElementOrder.stable())} guarantees the ordering of the returned
    * collections of the following methods:
    *
    * <ul>
-   *   <li>For {@link Graph} and {@link ValueGraph}:
+   *   <li>For {@code Graph} and {@code ValueGraph}:
    *       <ul>
    *         <li>{@code edges()}: Stable order
    *         <li>{@code adjacentNodes(node)}: Connecting edge insertion order
@@ -104,7 +102,7 @@ public final class ElementOrder<T> {
    *         <li>{@code successors(node)}: Connecting edge insertion order
    *         <li>{@code incidentEdges(node)}: Edge insertion order
    *       </ul>
-   *   <li>For {@link Network}:
+   *   <li>For {@code Network}:
    *       <ul>
    *         <li>{@code adjacentNodes(node)}: Stable order
    *         <li>{@code predecessors(node)}: Connecting edge insertion order
@@ -149,7 +147,7 @@ public final class ElementOrder<T> {
   }
 
   /**
-   * Returns the {@link Comparator} used.
+   * Returns the {@code Comparator} used.
    *
    * @throws UnsupportedOperationException if comparator is not defined
    */
@@ -187,7 +185,7 @@ public final class ElementOrder<T> {
     return helper.toString();
   }
 
-  /** Returns an empty mutable map whose keys will respect this {@link ElementOrder}. */
+  /** Returns an empty mutable map whose keys will respect this {@code ElementOrder}. */
   <K extends T, V> Map<K, V> createMap(int expectedSize) {
     switch (type) {
       case UNORDERED:

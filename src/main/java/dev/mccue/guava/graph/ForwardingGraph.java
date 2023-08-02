@@ -19,7 +19,7 @@ package dev.mccue.guava.graph;
 import java.util.Set;
 
 /**
- * A class to allow {@link Graph} implementations to be backed by a {@link BaseGraph}. This is not
+ * A class to allow {@code Graph} implementations to be backed by a {@code BaseGraph}. This is not
  * currently planned to be released as a general-purpose forwarding class.
  *
  * @author James Sexton
@@ -35,7 +35,7 @@ abstract class ForwardingGraph<N> extends AbstractGraph<N> {
   }
 
   /**
-   * Defer to {@link AbstractGraph#edges()} (based on {@link #successors(Object)}) for full edges()
+   * Defer to {@code AbstractGraph#edges()} (based on {@code #successors(Object)}) for full edges()
    * implementation.
    */
   @Override

@@ -29,10 +29,10 @@ import dev.mccue.jsr305.CheckForNull;
 
 /**
  * A map-like data structure that wraps a backing map and caches values while iterating through
- * {@link #unmodifiableKeySet()}. By design, the cache is cleared when this structure is mutated. If
+ * {@code #unmodifiableKeySet()}. By design, the cache is cleared when this structure is mutated. If
  * this structure is never mutated, it provides a thread-safe view of the backing map.
  *
- * <p>The {@link MapIteratorCache} assumes ownership of the backing map, and cannot guarantee
+ * <p>The {@code MapIteratorCache} assumes ownership of the backing map, and cannot guarantee
  * correctness in the face of external mutations to the backing map. As such, it is <b>strongly</b>
  * recommended that the caller does not persist a reference to the backing map (unless the backing
  * map is immutable).

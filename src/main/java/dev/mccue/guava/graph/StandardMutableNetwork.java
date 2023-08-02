@@ -28,8 +28,8 @@ import dev.mccue.guava.collect.ImmutableList;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 
 /**
- * Standard implementation of {@link MutableNetwork} that supports both directed and undirected
- * graphs. Instances of this class should be constructed with {@link NetworkBuilder}.
+ * Standard implementation of {@code MutableNetwork} that supports both directed and undirected
+ * graphs. Instances of this class should be constructed with {@code NetworkBuilder}.
  *
  * <p>Time complexities for mutation methods are all O(1) except for {@code removeNode(N node)},
  * which is in O(d_node) where d_node is the degree of {@code node}.
@@ -63,7 +63,7 @@ final class StandardMutableNetwork<N, E> extends StandardNetwork<N, E>
   }
 
   /**
-   * Adds {@code node} to the graph and returns the associated {@link NetworkConnections}.
+   * Adds {@code node} to the graph and returns the associated {@code NetworkConnections}.
    *
    * @throws IllegalStateException if {@code node} is already present
    */

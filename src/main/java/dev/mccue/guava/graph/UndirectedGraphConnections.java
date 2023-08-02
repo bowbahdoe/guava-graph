@@ -31,7 +31,7 @@ import java.util.Set;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * An implementation of {@link GraphConnections} for undirected graphs.
+ * An implementation of {@code GraphConnections} for undirected graphs.
  *
  * @author James Sexton
  * @param <N> Node parameter type

@@ -30,10 +30,10 @@ import java.util.Set;
 import java.util.TreeMap;
 
 /**
- * Standard implementation of {@link Network} that supports the options supplied by {@link
+ * Standard implementation of {@code Network} that supports the options supplied by {@code
  * NetworkBuilder}.
  *
- * <p>This class maintains a map of nodes to {@link NetworkConnections}. This class also maintains a
+ * <p>This class maintains a map of nodes to {@code NetworkConnections}. This class also maintains a
  * map of edges to reference nodes. The reference node is defined to be the edge's source node on
  * directed graphs, and an arbitrary endpoint of the edge on undirected graphs.
  *

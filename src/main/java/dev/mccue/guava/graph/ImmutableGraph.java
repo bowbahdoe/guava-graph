@@ -18,7 +18,6 @@ package dev.mccue.guava.graph;
 
 import static dev.mccue.guava.base.Preconditions.checkNotNull;
 
-
 import dev.mccue.guava.base.Function;
 import dev.mccue.guava.base.Functions;
 import dev.mccue.guava.collect.ImmutableMap;
@@ -28,8 +27,8 @@ import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.google.errorprone.annotations.Immutable;
 
 /**
- * A {@link Graph} whose elements and structural relationships will never change. Instances of this
- * class may be obtained with {@link #copyOf(Graph)}.
+ * A {@code Graph} whose elements and structural relationships will never change. Instances of this
+ * class may be obtained with {@code #copyOf(Graph)}.
  *
  * <p>See the Guava User's Guide's <a
  * href="https://github.com/google/guava/wiki/GraphsExplained#immutable-implementations">discussion
@@ -43,7 +42,6 @@ import com.google.errorprone.annotations.Immutable;
  * @param <N> Node parameter type
  * @since 20.0
  */
-@Beta
 @Immutable(containerOf = {"N"})
 @ElementTypesAreNonnullByDefault
 public class ImmutableGraph<N> extends ForwardingGraph<N> {
@@ -106,7 +104,7 @@ public class ImmutableGraph<N> extends ForwardingGraph<N> {
   }
 
   /**
-   * A builder for creating {@link ImmutableGraph} instances, especially {@code static final}
+   * A builder for creating {@code ImmutableGraph} instances, especially {@code static final}
    * graphs. Example:
    *
    * <pre>{@code
@@ -120,7 +118,7 @@ public class ImmutableGraph<N> extends ForwardingGraph<N> {
    *         .build();
    * }</pre>
    *
-   * <p>Builder instances can be reused; it is safe to call {@link #build} multiple times to build
+   * <p>Builder instances can be reused; it is safe to call {@code #build} multiple times to build
    * multiple graphs in series. Each new graph contains all the elements of the ones created before
    * it.
    *
@@ -156,10 +154,10 @@ public class ImmutableGraph<N> extends ForwardingGraph<N> {
      * undirected.
      *
      * <p>If {@code nodeU} and {@code nodeV} are not already present in this graph, this method will
-     * silently {@link #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
+     * silently {@code #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
      *
      * @return this {@code Builder} object
-     * @throws IllegalArgumentException if the introduction of the edge would violate {@link
+     * @throws IllegalArgumentException if the introduction of the edge would violate {@code
      *     #allowsSelfLoops()}
      */
     @CanIgnoreReturnValue
@@ -178,10 +176,10 @@ public class ImmutableGraph<N> extends ForwardingGraph<N> {
      * <p>If this graph is directed, {@code endpoints} must be ordered.
      *
      * <p>If either or both endpoints are not already present in this graph, this method will
-     * silently {@link #addNode(Object) add} each missing endpoint to the graph.
+     * silently {@code #addNode(Object) add} each missing endpoint to the graph.
      *
      * @return this {@code Builder} object
-     * @throws IllegalArgumentException if the introduction of the edge would violate {@link
+     * @throws IllegalArgumentException if the introduction of the edge would violate {@code
      *     #allowsSelfLoops()}
      * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
      */

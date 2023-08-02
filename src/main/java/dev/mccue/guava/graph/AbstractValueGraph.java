@@ -18,7 +18,6 @@ package dev.mccue.guava.graph;
 
 import static java.util.Objects.requireNonNull;
 
-
 import dev.mccue.guava.collect.Maps;
 import java.util.Map;
 import java.util.Optional;
@@ -26,8 +25,8 @@ import java.util.Set;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * This class provides a skeletal implementation of {@link ValueGraph}. It is recommended to extend
- * this class rather than implement {@link ValueGraph} directly.
+ * This class provides a skeletal implementation of {@code ValueGraph}. It is recommended to extend
+ * this class rather than implement {@code ValueGraph} directly.
  *
  * <p>The methods implemented in this class should not be overridden unless the subclass admits a
  * more efficient implementation.
@@ -37,7 +36,6 @@ import dev.mccue.jsr305.CheckForNull;
  * @param <V> Value parameter type
  * @since 20.0
  */
-@Beta
 @ElementTypesAreNonnullByDefault
 public abstract class AbstractValueGraph<N, V> extends AbstractBaseGraph<N>
     implements ValueGraph<N, V> {

@@ -21,7 +21,7 @@ import java.util.Set;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * A class to allow {@link Network} implementations to be backed by a provided delegate. This is not
+ * A class to allow {@code Network} implementations to be backed by a provided delegate. This is not
  * currently planned to be released as a general-purpose forwarding class.
  *
  * @author James Sexton

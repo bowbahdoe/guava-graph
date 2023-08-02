@@ -54,7 +54,7 @@ final class GraphConstants {
   static final String ENDPOINTS_MISMATCH =
       "Mismatch: endpoints' ordering is not compatible with directionality of the graph";
 
-  /** Singleton edge value for {@link Graph} implementations backed by {@link ValueGraph}s. */
+  /** Singleton edge value for {@code Graph} implementations backed by {@code ValueGraph}s. */
   enum Presence {
     EDGE_EXISTS
   }

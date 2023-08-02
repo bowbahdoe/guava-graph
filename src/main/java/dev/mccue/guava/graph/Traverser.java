@@ -20,7 +20,6 @@ import static dev.mccue.guava.base.Preconditions.checkArgument;
 import static dev.mccue.guava.base.Preconditions.checkNotNull;
 import static java.util.Objects.requireNonNull;
 
-
 import dev.mccue.guava.collect.AbstractIterator;
 import dev.mccue.guava.collect.ImmutableSet;
 import com.google.errorprone.annotations.DoNotMock;
@@ -33,10 +32,10 @@ import dev.mccue.jsr305.CheckForNull;
 
 /**
  * An object that can traverse the nodes that are reachable from a specified (set of) start node(s)
- * using a specified {@link SuccessorsFunction}.
+ * using a specified {@code SuccessorsFunction}.
  *
- * <p>There are two entry points for creating a {@code Traverser}: {@link
- * #forTree(SuccessorsFunction)} and {@link #forGraph(SuccessorsFunction)}. You should choose one
+ * <p>There are two entry points for creating a {@code Traverser}: {@code
+ * #forTree(SuccessorsFunction)} and {@code #forGraph(SuccessorsFunction)}. You should choose one
  * based on your answers to the following questions:
  *
  * <ol>
@@ -49,8 +48,8 @@ import dev.mccue.jsr305.CheckForNull;
  * <p>If your answers are:
  *
  * <ul>
- *   <li>(1) "no" and (2) "no", use {@link #forGraph(SuccessorsFunction)}.
- *   <li>(1) "yes" and (2) "yes", use {@link #forTree(SuccessorsFunction)}.
+ *   <li>(1) "no" and (2) "no", use {@code #forGraph(SuccessorsFunction)}.
+ *   <li>(1) "yes" and (2) "yes", use {@code #forTree(SuccessorsFunction)}.
  *   <li>(1) "yes" and (2) "no", you can use either, but {@code forTree()} will be more efficient.
  *   <li>(1) "no" and (2) "yes", <b><i>neither will work</i></b>, but if you transform your node
  *       objects into a non-recursive form, you can use {@code forGraph()}.
@@ -60,7 +59,6 @@ import dev.mccue.jsr305.CheckForNull;
  * @param <N> Node parameter type
  * @since 23.1
  */
-@Beta
 @DoNotMock(
     "Call forGraph or forTree, passing a lambda or a Graph with the desired edges (built with"
         + " GraphBuilder)")
@@ -79,7 +77,7 @@ public abstract class Traverser<N> {
    * start node(s) at most once.
    *
    * <p>If you know that no node in {@code graph} is reachable by more than one path from the start
-   * node(s), consider using {@link #forTree(SuccessorsFunction)} instead.
+   * node(s), consider using {@code #forTree(SuccessorsFunction)} instead.
    *
    * <p><b>Performance notes</b>
    *
@@ -94,7 +92,7 @@ public abstract class Traverser<N> {
    *       number of nodes that have been seen but not yet visited, that is, the "horizon").
    * </ul>
    *
-   * @param graph {@link SuccessorsFunction} representing a general graph that may have cycles.
+   * @param graph {@code SuccessorsFunction} representing a general graph that may have cycles.
    */
   public static <N> Traverser<N> forGraph(SuccessorsFunction<N> graph) {
     return new Traverser<N>(graph) {
@@ -175,7 +173,7 @@ public abstract class Traverser<N> {
    * Traverser.forTree(node -> ImmutableList.of(leftChild(node), rightChild(node)));
    * }</pre>
    *
-   * @param tree {@link SuccessorsFunction} representing a directed acyclic graph that has at most
+   * @param tree {@code SuccessorsFunction} representing a directed acyclic graph that has at most
    *     one path between any two nodes
    */
   public static <N> Traverser<N> forTree(SuccessorsFunction<N> tree) {

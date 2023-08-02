@@ -20,19 +20,18 @@ import static dev.mccue.guava.base.Preconditions.checkArgument;
 import static dev.mccue.guava.base.Preconditions.checkNotNull;
 import static dev.mccue.guava.graph.Graphs.checkNonNegative;
 
-
 import dev.mccue.guava.base.Optional;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 
 /**
- * A builder for constructing instances of {@link MutableValueGraph} or {@link ImmutableValueGraph}
+ * A builder for constructing instances of {@code MutableValueGraph} or {@code ImmutableValueGraph}
  * with user-defined properties.
  *
  * <p>A {@code ValueGraph} built by this class has the following default properties:
  *
  * <ul>
  *   <li>does not allow self-loops
- *   <li>orders {@link ValueGraph#nodes()} in the order in which the elements were added (insertion
+ *   <li>orders {@code ValueGraph#nodes()} in the order in which the elements were added (insertion
  *       order)
  * </ul>
  *
@@ -65,14 +64,13 @@ import com.google.errorprone.annotations.CanIgnoreReturnValue;
  * @author James Sexton
  * @author Joshua O'Madadhain
  * @param <N> The most general node type this builder will support. This is normally {@code Object}
- *     unless it is constrained by using a method like {@link #nodeOrder}, or the builder is
- *     constructed based on an existing {@code ValueGraph} using {@link #from(ValueGraph)}.
+ *     unless it is constrained by using a method like {@code #nodeOrder}, or the builder is
+ *     constructed based on an existing {@code ValueGraph} using {@code #from(ValueGraph)}.
  * @param <V> The most general value type this builder will support. This is normally {@code Object}
- *     unless the builder is constructed based on an existing {@code Graph} using {@link
+ *     unless the builder is constructed based on an existing {@code Graph} using {@code
  *     #from(ValueGraph)}.
  * @since 20.0
  */
-@Beta
 @ElementTypesAreNonnullByDefault
 public final class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
 
@@ -81,22 +79,22 @@ public final class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
     super(directed);
   }
 
-  /** Returns a {@link ValueGraphBuilder} for building directed graphs. */
+  /** Returns a {@code ValueGraphBuilder} for building directed graphs. */
   public static ValueGraphBuilder<Object, Object> directed() {
     return new ValueGraphBuilder<>(true);
   }
 
-  /** Returns a {@link ValueGraphBuilder} for building undirected graphs. */
+  /** Returns a {@code ValueGraphBuilder} for building undirected graphs. */
   public static ValueGraphBuilder<Object, Object> undirected() {
     return new ValueGraphBuilder<>(false);
   }
 
   /**
-   * Returns a {@link ValueGraphBuilder} initialized with all properties queryable from {@code
+   * Returns a {@code ValueGraphBuilder} initialized with all properties queryable from {@code
    * graph}.
    *
-   * <p>The "queryable" properties are those that are exposed through the {@link ValueGraph}
-   * interface, such as {@link ValueGraph#isDirected()}. Other properties, such as {@link
+   * <p>The "queryable" properties are those that are exposed through the {@code ValueGraph}
+   * interface, such as {@code ValueGraph#isDirected()}. Other properties, such as {@code
    * #expectedNodeCount(int)}, are not set in the new builder.
    */
   public static <N, V> ValueGraphBuilder<N, V> from(ValueGraph<N, V> graph) {
@@ -107,12 +105,12 @@ public final class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
   }
 
   /**
-   * Returns an {@link ImmutableValueGraph.Builder} with the properties of this {@link
+   * Returns an {@code ImmutableValueGraph.Builder} with the properties of this {@code
    * ValueGraphBuilder}.
    *
-   * <p>The returned builder can be used for populating an {@link ImmutableValueGraph}.
+   * <p>The returned builder can be used for populating an {@code ImmutableValueGraph}.
    *
-   * <p>Note that the returned builder will always have {@link #incidentEdgeOrder} set to {@link
+   * <p>Note that the returned builder will always have {@code #incidentEdgeOrder} set to {@code
    * ElementOrder#stable()}, regardless of the value that was set in this builder.
    *
    * @since 28.0
@@ -124,7 +122,7 @@ public final class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
 
   /**
    * Specifies whether the graph will allow self-loops (edges that connect a node to itself).
-   * Attempting to add a self-loop to a graph that does not allow them will throw an {@link
+   * Attempting to add a self-loop to a graph that does not allow them will throw an {@code
    * UnsupportedOperationException}.
    *
    * <p>The default value is {@code false}.
@@ -147,9 +145,9 @@ public final class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
   }
 
   /**
-   * Specifies the order of iteration for the elements of {@link Graph#nodes()}.
+   * Specifies the order of iteration for the elements of {@code Graph#nodes()}.
    *
-   * <p>The default value is {@link ElementOrder#insertion() insertion order}.
+   * <p>The default value is {@code ElementOrder#insertion() insertion order}.
    */
   public <N1 extends N> ValueGraphBuilder<N1, V> nodeOrder(ElementOrder<N1> nodeOrder) {
     ValueGraphBuilder<N1, V> newBuilder = cast();
@@ -158,12 +156,12 @@ public final class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
   }
 
   /**
-   * Specifies the order of iteration for the elements of {@link ValueGraph#edges()}, {@link
-   * ValueGraph#adjacentNodes(Object)}, {@link ValueGraph#predecessors(Object)}, {@link
-   * ValueGraph#successors(Object)} and {@link ValueGraph#incidentEdges(Object)}.
+   * Specifies the order of iteration for the elements of {@code ValueGraph#edges()}, {@code
+   * ValueGraph#adjacentNodes(Object)}, {@code ValueGraph#predecessors(Object)}, {@code
+   * ValueGraph#successors(Object)} and {@code ValueGraph#incidentEdges(Object)}.
    *
-   * <p>The default value is {@link ElementOrder#unordered() unordered} for mutable graphs. For
-   * immutable graphs, this value is ignored; they always have a {@link ElementOrder#stable()
+   * <p>The default value is {@code ElementOrder#unordered() unordered} for mutable graphs. For
+   * immutable graphs, this value is ignored; they always have a {@code ElementOrder#stable()
    * stable} order.
    *
    * @throws IllegalArgumentException if {@code incidentEdgeOrder} is not either {@code
@@ -183,7 +181,7 @@ public final class ValueGraphBuilder<N, V> extends AbstractGraphBuilder<N> {
     return newBuilder;
   }
   /**
-   * Returns an empty {@link MutableValueGraph} with the properties of this {@link
+   * Returns an empty {@code MutableValueGraph} with the properties of this {@code
    * ValueGraphBuilder}.
    */
   public <N1 extends N, V1 extends V> MutableValueGraph<N1, V1> build() {

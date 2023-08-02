@@ -22,7 +22,7 @@ import dev.mccue.jsr305.CheckForNull;
 
 /**
  * An interface for representing and manipulating an origin node's adjacent nodes and incident edges
- * in a {@link Network}.
+ * in a {@code Network}.
  *
  * @author James Sexton
  * @param <N> Node parameter type

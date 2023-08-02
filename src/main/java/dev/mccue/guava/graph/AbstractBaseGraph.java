@@ -32,7 +32,7 @@ import java.util.Set;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * This class provides a skeletal implementation of {@link BaseGraph}.
+ * This class provides a skeletal implementation of {@code BaseGraph}.
  *
  * <p>The methods implemented in this class should not be overridden unless the subclass admits a
  * more efficient implementation.
@@ -44,7 +44,7 @@ import dev.mccue.jsr305.CheckForNull;
 abstract class AbstractBaseGraph<N> implements BaseGraph<N> {
 
   /**
-   * Returns the number of edges in this graph; used to calculate the size of {@link Graph#edges()}.
+   * Returns the number of edges in this graph; used to calculate the size of {@code Graph#edges()}.
    * This implementation requires O(|N|) time. Classes extending this one may manually keep track of
    * the number of edges as the graph is updated, and override this method for better performance.
    */
@@ -59,8 +59,8 @@ abstract class AbstractBaseGraph<N> implements BaseGraph<N> {
   }
 
   /**
-   * An implementation of {@link BaseGraph#edges()} defined in terms of {@link Graph#nodes()} and
-   * {@link #successors(Object)}.
+   * An implementation of {@code BaseGraph#edges()} defined in terms of {@code Graph#nodes()} and
+   * {@code #successors(Object)}.
    */
   @Override
   public Set<EndpointPair<N>> edges() {

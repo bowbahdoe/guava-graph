@@ -21,7 +21,7 @@ import java.util.Set;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * Abstract base class for an incident edges set that allows different implementations of {@link
+ * Abstract base class for an incident edges set that allows different implementations of {@code
  * AbstractSet#iterator()}.
  */
 @ElementTypesAreNonnullByDefault

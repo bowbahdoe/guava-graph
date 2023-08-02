@@ -16,7 +16,6 @@
 
 package dev.mccue.guava.graph;
 
-
 import com.google.errorprone.annotations.DoNotMock;
 import java.util.Optional;
 import java.util.Set;
@@ -30,12 +29,12 @@ import dev.mccue.jsr305.CheckForNull;
  * <p>A graph is composed of a set of nodes and a set of edges connecting pairs of nodes.
  *
  * <p>There are three primary interfaces provided to represent graphs. In order of increasing
- * complexity they are: {@link Graph}, {@link ValueGraph}, and {@link Network}. You should generally
+ * complexity they are: {@code Graph}, {@code ValueGraph}, and {@code Network}. You should generally
  * prefer the simplest interface that satisfies your use case. See the <a
  * href="https://github.com/google/guava/wiki/GraphsExplained#choosing-the-right-graph-type">
  * "Choosing the right graph type"</a> section of the Guava User Guide for more details.
  *
- * <h2>Capabilities</h2>
+ * <h3>Capabilities</h3>
  *
  * <p>{@code Network} supports the following use cases (<a
  * href="https://github.com/google/guava/wiki/GraphsExplained#definitions">definitions of
@@ -53,27 +52,27 @@ import dev.mccue.jsr305.CheckForNull;
  * <h3>Building a {@code Network}</h3>
  *
  * <p>The implementation classes that {@code common.graph} provides are not public, by design. To
- * create an instance of one of the built-in implementations of {@code Network}, use the {@link
+ * create an instance of one of the built-in implementations of {@code Network}, use the {@code
  * NetworkBuilder} class:
  *
  * <pre>{@code
  * MutableNetwork<Integer, MyEdge> graph = NetworkBuilder.directed().build();
  * }</pre>
  *
- * <p>{@link NetworkBuilder#build()} returns an instance of {@link MutableNetwork}, which is a
+ * <p>{@code NetworkBuilder#build()} returns an instance of {@code MutableNetwork}, which is a
  * subtype of {@code Network} that provides methods for adding and removing nodes and edges. If you
  * do not need to mutate a graph (e.g. if you write a method than runs a read-only algorithm on the
- * graph), you should use the non-mutating {@link Network} interface, or an {@link
+ * graph), you should use the non-mutating {@code Network} interface, or an {@code
  * ImmutableNetwork}.
  *
- * <p>You can create an immutable copy of an existing {@code Network} using {@link
+ * <p>You can create an immutable copy of an existing {@code Network} using {@code
  * ImmutableNetwork#copyOf(Network)}:
  *
  * <pre>{@code
  * ImmutableNetwork<Integer, MyEdge> immutableGraph = ImmutableNetwork.copyOf(graph);
  * }</pre>
  *
- * <p>Instances of {@link ImmutableNetwork} do not implement {@link MutableNetwork} (obviously!) and
+ * <p>Instances of {@code ImmutableNetwork} do not implement {@code MutableNetwork} (obviously!) and
  * are contractually guaranteed to be unmodifiable and thread-safe.
  *
  * <p>The Guava User Guide has <a
@@ -102,7 +101,6 @@ import dev.mccue.jsr305.CheckForNull;
  * @param <E> Edge parameter type
  * @since 20.0
  */
-@Beta
 @DoNotMock("Use NetworkBuilder to create a real instance")
 @ElementTypesAreNonnullByDefault
 public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFunction<N> {
@@ -110,19 +108,19 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
   // Network-level accessors
   //
 
-  /** Returns all nodes in this network, in the order specified by {@link #nodeOrder()}. */
+  /** Returns all nodes in this network, in the order specified by {@code #nodeOrder()}. */
   Set<N> nodes();
 
-  /** Returns all edges in this network, in the order specified by {@link #edgeOrder()}. */
+  /** Returns all edges in this network, in the order specified by {@code #edgeOrder()}. */
   Set<E> edges();
 
   /**
-   * Returns a live view of this network as a {@link Graph}. The resulting {@link Graph} will have
-   * an edge connecting node A to node B if this {@link Network} has an edge connecting A to B.
+   * Returns a live view of this network as a {@code Graph}. The resulting {@code Graph} will have
+   * an edge connecting node A to node B if this {@code Network} has an edge connecting A to B.
    *
-   * <p>If this network {@link #allowsParallelEdges() allows parallel edges}, parallel edges will be
-   * treated as if collapsed into a single edge. For example, the {@link #degree(Object)} of a node
-   * in the {@link Graph} view may be less than the degree of the same node in this {@link Network}.
+   * <p>If this network {@code #allowsParallelEdges() allows parallel edges}, parallel edges will be
+   * treated as if collapsed into a single edge. For example, the {@code #degree(Object)} of a node
+   * in the {@code Graph} view may be less than the degree of the same node in this {@code Network}.
    */
   Graph<N> asGraph();
 
@@ -131,29 +129,29 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
   //
 
   /**
-   * Returns true if the edges in this network are directed. Directed edges connect a {@link
-   * EndpointPair#source() source node} to a {@link EndpointPair#target() target node}, while
+   * Returns true if the edges in this network are directed. Directed edges connect a {@code
+   * EndpointPair#source() source node} to a {@code EndpointPair#target() target node}, while
    * undirected edges connect a pair of nodes to each other.
    */
   boolean isDirected();
 
   /**
    * Returns true if this network allows parallel edges. Attempting to add a parallel edge to a
-   * network that does not allow them will throw an {@link IllegalArgumentException}.
+   * network that does not allow them will throw an {@code IllegalArgumentException}.
    */
   boolean allowsParallelEdges();
 
   /**
    * Returns true if this network allows self-loops (edges that connect a node to itself).
-   * Attempting to add a self-loop to a network that does not allow them will throw an {@link
+   * Attempting to add a self-loop to a network that does not allow them will throw an {@code
    * IllegalArgumentException}.
    */
   boolean allowsSelfLoops();
 
-  /** Returns the order of iteration for the elements of {@link #nodes()}. */
+  /** Returns the order of iteration for the elements of {@code #nodes()}. */
   ElementOrder<N> nodeOrder();
 
-  /** Returns the order of iteration for the elements of {@link #edges()}. */
+  /** Returns the order of iteration for the elements of {@code #edges()}. */
   ElementOrder<E> edgeOrder();
 
   //
@@ -163,7 +161,7 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
   /**
    * Returns the nodes which have an incident edge in common with {@code node} in this network.
    *
-   * <p>This is equal to the union of {@link #predecessors(Object)} and {@link #successors(Object)}.
+   * <p>This is equal to the union of {@code #predecessors(Object)} and {@code #successors(Object)}.
    *
    * @throws IllegalArgumentException if {@code node} is not an element of this network
    */
@@ -173,7 +171,7 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
    * Returns all nodes in this network adjacent to {@code node} which can be reached by traversing
    * {@code node}'s incoming edges <i>against</i> the direction (if any) of the edge.
    *
-   * <p>In an undirected network, this is equivalent to {@link #adjacentNodes(Object)}.
+   * <p>In an undirected network, this is equivalent to {@code #adjacentNodes(Object)}.
    *
    * @throws IllegalArgumentException if {@code node} is not an element of this network
    */
@@ -184,10 +182,10 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
    * Returns all nodes in this network adjacent to {@code node} which can be reached by traversing
    * {@code node}'s outgoing edges in the direction (if any) of the edge.
    *
-   * <p>In an undirected network, this is equivalent to {@link #adjacentNodes(Object)}.
+   * <p>In an undirected network, this is equivalent to {@code #adjacentNodes(Object)}.
    *
    * <p>This is <i>not</i> the same as "all nodes reachable from {@code node} by following outgoing
-   * edges". For that functionality, see {@link Graphs#reachableNodes(Graph, Object)}.
+   * edges". For that functionality, see {@code Graphs#reachableNodes(Graph, Object)}.
    *
    * @throws IllegalArgumentException if {@code node} is not an element of this network
    */
@@ -195,10 +193,10 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
   Set<N> successors(N node);
 
   /**
-   * Returns the edges whose {@link #incidentNodes(Object) incident nodes} in this network include
+   * Returns the edges whose {@code #incidentNodes(Object) incident nodes} in this network include
    * {@code node}.
    *
-   * <p>This is equal to the union of {@link #inEdges(Object)} and {@link #outEdges(Object)}.
+   * <p>This is equal to the union of {@code #inEdges(Object)} and {@code #outEdges(Object)}.
    *
    * @throws IllegalArgumentException if {@code node} is not an element of this network
    */
@@ -208,9 +206,9 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
    * Returns all edges in this network which can be traversed in the direction (if any) of the edge
    * to end at {@code node}.
    *
-   * <p>In a directed network, an incoming edge's {@link EndpointPair#target()} equals {@code node}.
+   * <p>In a directed network, an incoming edge's {@code EndpointPair#target()} equals {@code node}.
    *
-   * <p>In an undirected network, this is equivalent to {@link #incidentEdges(Object)}.
+   * <p>In an undirected network, this is equivalent to {@code #incidentEdges(Object)}.
    *
    * @throws IllegalArgumentException if {@code node} is not an element of this network
    */
@@ -220,16 +218,16 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
    * Returns all edges in this network which can be traversed in the direction (if any) of the edge
    * starting from {@code node}.
    *
-   * <p>In a directed network, an outgoing edge's {@link EndpointPair#source()} equals {@code node}.
+   * <p>In a directed network, an outgoing edge's {@code EndpointPair#source()} equals {@code node}.
    *
-   * <p>In an undirected network, this is equivalent to {@link #incidentEdges(Object)}.
+   * <p>In an undirected network, this is equivalent to {@code #incidentEdges(Object)}.
    *
    * @throws IllegalArgumentException if {@code node} is not an element of this network
    */
   Set<E> outEdges(N node);
 
   /**
-   * Returns the count of {@code node}'s {@link #incidentEdges(Object) incident edges}, counting
+   * Returns the count of {@code node}'s {@code #incidentEdges(Object) incident edges}, counting
    * self-loops twice (equivalently, the number of times an edge touches {@code node}).
    *
    * <p>For directed networks, this is equal to {@code inDegree(node) + outDegree(node)}.
@@ -244,8 +242,8 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
   int degree(N node);
 
   /**
-   * Returns the count of {@code node}'s {@link #inEdges(Object) incoming edges} in a directed
-   * network. In an undirected network, returns the {@link #degree(Object)}.
+   * Returns the count of {@code node}'s {@code #inEdges(Object) incoming edges} in a directed
+   * network. In an undirected network, returns the {@code #degree(Object)}.
    *
    * <p>If the count is greater than {@code Integer.MAX_VALUE}, returns {@code Integer.MAX_VALUE}.
    *
@@ -254,8 +252,8 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
   int inDegree(N node);
 
   /**
-   * Returns the count of {@code node}'s {@link #outEdges(Object) outgoing edges} in a directed
-   * network. In an undirected network, returns the {@link #degree(Object)}.
+   * Returns the count of {@code node}'s {@code #outEdges(Object) outgoing edges} in a directed
+   * network. In an undirected network, returns the {@code #degree(Object)}.
    *
    * <p>If the count is greater than {@code Integer.MAX_VALUE}, returns {@code Integer.MAX_VALUE}.
    *
@@ -271,7 +269,7 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
   EndpointPair<N> incidentNodes(E edge);
 
   /**
-   * Returns the edges which have an {@link #incidentNodes(Object) incident node} in common with
+   * Returns the edges which have an {@code #incidentNodes(Object) incident node} in common with
    * {@code edge}. An edge is not considered adjacent to itself.
    *
    * @throws IllegalArgumentException if {@code edge} is not an element of this network
@@ -283,8 +281,8 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
    *
    * <p>In an undirected network, this is equal to {@code edgesConnecting(nodeV, nodeU)}.
    *
-   * <p>The resulting set of edges will be parallel (i.e. have equal {@link
-   * #incidentNodes(Object)}). If this network does not {@link #allowsParallelEdges() allow parallel
+   * <p>The resulting set of edges will be parallel (i.e. have equal {@code
+   * #incidentNodes(Object)}). If this network does not {@code #allowsParallelEdges() allow parallel
    * edges}, the resulting set will contain at most one edge (equivalent to {@code
    * edgeConnecting(nodeU, nodeV).asSet()}).
    *
@@ -297,8 +295,8 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
    * Returns the set of edges that each directly connect {@code endpoints} (in the order, if any,
    * specified by {@code endpoints}).
    *
-   * <p>The resulting set of edges will be parallel (i.e. have equal {@link
-   * #incidentNodes(Object)}). If this network does not {@link #allowsParallelEdges() allow parallel
+   * <p>The resulting set of edges will be parallel (i.e. have equal {@code
+   * #incidentNodes(Object)}). If this network does not {@code #allowsParallelEdges() allow parallel
    * edges}, the resulting set will contain at most one edge (equivalent to {@code
    * edgeConnecting(endpoints).asSet()}).
    *
@@ -386,7 +384,7 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
    *
    * <p>Unlike the other {@code EndpointPair}-accepting methods, this method does not throw if the
    * endpoints are unordered and the graph is directed; it simply returns {@code false}. This is for
-   * consistency with {@link Graph#hasEdgeConnecting(EndpointPair)} and {@link
+   * consistency with {@code Graph#hasEdgeConnecting(EndpointPair)} and {@code
    * ValueGraph#hasEdgeConnecting(EndpointPair)}.
    *
    * @since 27.1
@@ -398,34 +396,34 @@ public interface Network<N, E> extends SuccessorsFunction<N>, PredecessorsFuncti
   //
 
   /**
-   * Returns {@code true} iff {@code object} is a {@link Network} that has the same elements and the
+   * Returns {@code true} iff {@code object} is a {@code Network} that has the same elements and the
    * same structural relationships as those in this network.
    *
    * <p>Thus, two networks A and B are equal if <b>all</b> of the following are true:
    *
    * <ul>
-   *   <li>A and B have equal {@link #isDirected() directedness}.
-   *   <li>A and B have equal {@link #nodes() node sets}.
-   *   <li>A and B have equal {@link #edges() edge sets}.
+   *   <li>A and B have equal {@code #isDirected() directedness}.
+   *   <li>A and B have equal {@code #nodes() node sets}.
+   *   <li>A and B have equal {@code #edges() edge sets}.
    *   <li>Every edge in A and B connects the same nodes in the same direction (if any).
    * </ul>
    *
-   * <p>Network properties besides {@link #isDirected() directedness} do <b>not</b> affect equality.
+   * <p>Network properties besides {@code #isDirected() directedness} do <b>not</b> affect equality.
    * For example, two networks may be considered equal even if one allows parallel edges and the
    * other doesn't. Additionally, the order in which nodes or edges are added to the network, and
    * the order in which they are iterated over, are irrelevant.
    *
-   * <p>A reference implementation of this is provided by {@link AbstractNetwork#equals(Object)}.
+   * <p>A reference implementation of this is provided by {@code AbstractNetwork#equals(Object)}.
    */
   @Override
   boolean equals(@CheckForNull Object object);
 
   /**
    * Returns the hash code for this network. The hash code of a network is defined as the hash code
-   * of a map from each of its {@link #edges() edges} to their {@link #incidentNodes(Object)
+   * of a map from each of its {@code #edges() edges} to their {@code #incidentNodes(Object)
    * incident nodes}.
    *
-   * <p>A reference implementation of this is provided by {@link AbstractNetwork#hashCode()}.
+   * <p>A reference implementation of this is provided by {@code AbstractNetwork#hashCode()}.
    */
   @Override
   int hashCode();

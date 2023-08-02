@@ -22,8 +22,8 @@ import java.util.Map;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * A {@link MapIteratorCache} that adds additional caching. In addition to the caching provided by
- * {@link MapIteratorCache}, this structure caches values for the two most recently retrieved keys.
+ * A {@code MapIteratorCache} that adds additional caching. In addition to the caching provided by
+ * {@code MapIteratorCache}, this structure caches values for the two most recently retrieved keys.
  *
  * @author James Sexton
  */

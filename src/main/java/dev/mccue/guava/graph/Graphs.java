@@ -20,7 +20,6 @@ import static dev.mccue.guava.base.Preconditions.checkArgument;
 import static dev.mccue.guava.graph.GraphConstants.NODE_NOT_IN_GRAPH;
 import static java.util.Objects.requireNonNull;
 
-
 import dev.mccue.guava.base.Objects;
 import dev.mccue.guava.collect.ImmutableSet;
 import dev.mccue.guava.collect.Iterables;
@@ -36,13 +35,12 @@ import java.util.Set;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * Static utility methods for {@link Graph}, {@link ValueGraph}, and {@link Network} instances.
+ * Static utility methods for {@code Graph}, {@code ValueGraph}, and {@code Network} instances.
  *
  * @author James Sexton
  * @author Joshua O'Madadhain
  * @since 20.0
  */
-@Beta
 @ElementTypesAreNonnullByDefault
 public final class Graphs {
 
@@ -141,11 +139,11 @@ public final class Graphs {
 
   /**
    * Returns the transitive closure of {@code graph}. The transitive closure of a graph is another
-   * graph with an edge connecting node A to node B if node B is {@link #reachableNodes(Graph,
+   * graph with an edge connecting node A to node B if node B is {@code #reachableNodes(Graph,
    * Object) reachable} from node A.
    *
    * <p>This is a "snapshot" based on the current topology of {@code graph}, rather than a live view
-   * of the transitive closure of {@code graph}. In other words, the returned {@link Graph} will not
+   * of the transitive closure of {@code graph}. In other words, the returned {@code Graph} will not
    * be updated after modifications to {@code graph}.
    */
   // TODO(b/31438252): Consider potential optimizations for this algorithm.
@@ -188,7 +186,7 @@ public final class Graphs {
    * and ending at node B. Note that a node is always reachable from itself via a zero-length path.
    *
    * <p>This is a "snapshot" based on the current topology of {@code graph}, rather than a live view
-   * of the set of nodes reachable from {@code node}. In other words, the returned {@link Set} will
+   * of the set of nodes reachable from {@code node}. In other words, the returned {@code Set} will
    * not be updated after modifications to {@code graph}.
    *
    * @throws IllegalArgumentException if {@code node} is not present in {@code graph}
@@ -476,7 +474,7 @@ public final class Graphs {
 
   /**
    * Returns the subgraph of {@code graph} induced by {@code nodes}. This subgraph is a new graph
-   * that contains all of the nodes in {@code nodes}, and all of the {@link Graph#edges() edges}
+   * that contains all of the nodes in {@code nodes}, and all of the {@code Graph#edges() edges}
    * from {@code graph} for which both nodes are contained by {@code nodes}.
    *
    * @throws IllegalArgumentException if any element in {@code nodes} is not a node in the graph
@@ -501,7 +499,7 @@ public final class Graphs {
 
   /**
    * Returns the subgraph of {@code graph} induced by {@code nodes}. This subgraph is a new graph
-   * that contains all of the nodes in {@code nodes}, and all of the {@link Graph#edges() edges}
+   * that contains all of the nodes in {@code nodes}, and all of the {@code Graph#edges() edges}
    * (and associated edge values) from {@code graph} for which both nodes are contained by {@code
    * nodes}.
    *
@@ -532,8 +530,8 @@ public final class Graphs {
 
   /**
    * Returns the subgraph of {@code network} induced by {@code nodes}. This subgraph is a new graph
-   * that contains all of the nodes in {@code nodes}, and all of the {@link Network#edges() edges}
-   * from {@code network} for which the {@link Network#incidentNodes(Object) incident nodes} are
+   * that contains all of the nodes in {@code nodes}, and all of the {@code Network#edges() edges}
+   * from {@code network} for which the {@code Network#incidentNodes(Object) incident nodes} are
    * both contained by {@code nodes}.
    *
    * @throws IllegalArgumentException if any element in {@code nodes} is not a node in the graph

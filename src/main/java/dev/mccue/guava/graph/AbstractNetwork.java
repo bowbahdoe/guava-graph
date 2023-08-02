@@ -22,7 +22,6 @@ import static dev.mccue.guava.graph.GraphConstants.ENDPOINTS_MISMATCH;
 import static dev.mccue.guava.graph.GraphConstants.MULTIPLE_EDGES_CONNECTING;
 import static java.util.Collections.unmodifiableSet;
 
-
 import dev.mccue.guava.base.Predicate;
 import dev.mccue.guava.collect.ImmutableSet;
 import dev.mccue.guava.collect.Iterators;
@@ -37,8 +36,8 @@ import java.util.Set;
 import dev.mccue.jsr305.CheckForNull;
 
 /**
- * This class provides a skeletal implementation of {@link Network}. It is recommended to extend
- * this class rather than implement {@link Network} directly.
+ * This class provides a skeletal implementation of {@code Network}. It is recommended to extend
+ * this class rather than implement {@code Network} directly.
  *
  * <p>The methods implemented in this class should not be overridden unless the subclass admits a
  * more efficient implementation.
@@ -48,7 +47,6 @@ import dev.mccue.jsr305.CheckForNull;
  * @param <E> Edge parameter type
  * @since 20.0
  */
-@Beta
 @ElementTypesAreNonnullByDefault
 public abstract class AbstractNetwork<N, E> implements Network<N, E> {
 
