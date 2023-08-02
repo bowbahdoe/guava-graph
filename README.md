@@ -1,28 +1,4 @@
-# guava-graph
-
-## What
-
-This package is a fork of [Guava](https://github.com/google/guava) around roughly release `32.1.1` which
-* Is shaded under `dev.mccue.guava`
-* Only contains the contents of the `com.google.common.graph` package
-* Has a proper `module-info.java`
-* Has all usages of `sun.misc.*` removed
-
-## Why
-
-* It [doesn't seem like guava will be modularized any time soon](https://github.com/google/guava/issues/2970#issuecomment-1572148291)
-* I want to enable more libraries to be fully modular so that the `jlink`
-workflow is more viable
-* Mechanical refactors are a really easy thing to do to fall asleep. This is how I count sheep.
-
-## Why Not
-
-* The transformation from Guava code to this was not _entirely_ mechanical.
-* I did make some small changes to APIs and internals that were Java 8 specific.
-* I haven't ported over the unit tests
-* GWT, j2objc, j2cl, etc. are not things I care about or want to support.
-* Does not include any android specific code. Equivalent to the `-jre` build.
-* Compiled for Java 9+, not Java 8
+# guava-base
 
 ## Usage
 
@@ -39,3 +15,36 @@ in-depth usage guides.
     <version>0.0.3</version>
 </dependency>
 ```
+
+## What
+
+This module is a soft-fork of [Guava](https://github.com/google/guava)
+
+* Is shaded under `dev.mccue.guava`
+* Has a proper `module-info.java`
+* Has all usages of `sun.misc.*`, The Security Manager, and `finalize()` removed.
+
+This module in particular only contains the code from `com.google.common.graph`.
+
+The work of shading is done by [this project](https://github.com/bowbahdoe/guava-generator). Releases of this and dependent modules should contain the guava release or commit hash from which they are generated. The version numbers will not (currently) line up with guava's version numbers, but that can change in the future.
+
+## Why
+
+* It [doesn't seem like guava will be modularized any time soon](https://github.com/google/guava/issues/2970#issuecomment-1572148291)
+* I want to enable more libraries to be fully modular so that the `jlink`
+workflow is more viable
+* This was fun to do, and it seems as if some people are interested in the results.
+
+## Support
+
+I'll try to keep up to date, but if you 
+
+* Notice something wrong
+* Want me to make a release for a new version
+* Want a minute of my time
+
+Feel free to reach out. 
+
+## Changes made from Guava
+
+Consult the [README of the aggregator module](https://github.com/bowbahdoe/guava) for a full change list.
