@@ -26,7 +26,7 @@ This module is a soft-fork of [Guava](https://github.com/google/guava) which
 
 This module in particular only contains the code from `com.google.common.graph`.
 
-The work of shading is done by [this project](https://github.com/bowbahdoe/guava-generator). Releases of this and dependent modules should contain the guava release or commit hash from which they are generated. The version numbers will not (currently) line up with guava's version numbers, but that can change in the future.
+The work of shading is done by [this project](https://github.com/bowbahdoe/guava-generator). Releases of this and dependent modules should contain the guava release or commit hash from which they are generated.
 
 ## Why
 
