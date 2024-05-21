@@ -12,7 +12,7 @@ in-depth usage guides.
 <dependency>
     <groupId>dev.mccue</groupId>
     <artifactId>guava-graph</artifactId>
-    <version>33.1.0</version>
+    <version>33.2.0</version>
 </dependency>
 ```
 
