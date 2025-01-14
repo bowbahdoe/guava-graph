@@ -6,7 +6,7 @@
 
     <groupId>dev.mccue</groupId>
     <artifactId>guava-graph</artifactId>
-    <version>33.2.0</version>
+    <version>33.4.0</version>
     <!-- <version>32.1.1</version> -->
     <packaging>jar</packaging>
 
@@ -47,25 +47,25 @@
         <dependency>
             <groupId>dev.mccue</groupId>
             <artifactId>guava-base</artifactId>
-            <version>33.2.0</version>
+            <version>33.4.0</version>
         </dependency>
 
         <dependency>
             <groupId>dev.mccue</groupId>
             <artifactId>guava-primitives</artifactId>
-            <version>33.2.0</version>
+            <version>33.4.0</version>
         </dependency>
 
         <dependency>
             <groupId>dev.mccue</groupId>
             <artifactId>guava-math</artifactId>
-            <version>33.2.0</version>
+            <version>33.4.0</version>
         </dependency>
 
         <dependency>
             <groupId>dev.mccue</groupId>
             <artifactId>guava-collect</artifactId>
-            <version>33.2.0</version>
+            <version>33.4.0</version>
         </dependency>
 
         <dependency>
