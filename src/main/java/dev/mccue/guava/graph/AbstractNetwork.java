@@ -52,6 +52,9 @@ import dev.mccue.jsr305.CheckForNull;
  */
 @ElementTypesAreNonnullByDefault
 public abstract class AbstractNetwork<N, E> implements Network<N, E> {
+  /** Constructor for use by subclasses. */
+  public AbstractNetwork() {}
+
   @Override
   public Graph<N> asGraph() {
     return new AbstractGraph<N>() {
